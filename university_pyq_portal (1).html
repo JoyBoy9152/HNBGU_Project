@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HNBGU Vault — Hemvati Nandan Bahuguna Garhwal University PYQ Archive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            hnbgu: {
+              gold: '#d97706',
+              forest: '#14532d',
+              slate: '#0f172a'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Custom subtle scrollbars for desktop split-pane layout */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.4);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(156, 163, 175, 0.7);
+    }
+    /* Subtle Himalayan emerald crest pattern */
+    .hero-crest-bg {
+      background-image: radial-gradient(circle at 85% 50%, rgba(16, 185, 129, 0.09) 0%, transparent 55%),
+                        radial-gradient(circle at 15% 20%, rgba(4, 120, 87, 0.09) 0%, transparent 50%);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-brand-600 selection:text-white transition-colors duration-200 flex flex-col min-h-screen">
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-30 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-600 via-brand-700 to-hnbgu-forest flex items-center justify-center text-white shadow-md shadow-brand-900/20 border border-emerald-300/30">
+          <svg class="w-6 h-6 text-emerald-100" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">HNBGU Vault</span>
+          <span class="hidden sm:inline-block ml-2 text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/60">
+            Central University Archive
+          </span>
+        </div>
+      </div>
+
+      <!-- Desktop Global Search Bar -->
+      <div class="flex-1 max-w-xl">
+        <div class="relative group">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-brand-600 dark:group-focus-within:text-brand-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by subject name, code (e.g., CS-301), or topic..."
+            class="w-full pl-11 pr-16 py-2.5 bg-slate-100 dark:bg-slate-800/80 border border-transparent focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 rounded-xl text-sm outline-none transition-all placeholder:text-slate-400"
+          />
+          <kbd class="hidden md:inline-flex items-center px-2 py-0.5 text-xs font-medium text-slate-400 bg-white dark:bg-slate-700 rounded-md border border-slate-200 dark:border-slate-600 absolute right-3 top-1/2 -translate-y-1/2">
+            /
+          </kbd>
+        </div>
+      </div>
+
+      <!-- Right Actions -->
+      <div class="flex items-center gap-2.5">
+        <a
+          href="#supportSection"
+          class="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+        >
+          Support & Contact
+        </a>
+        <button
+          id="openSubmitModalBtn"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-white text-sm font-medium shadow-sm transition-all active:scale-[0.98]"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+          </svg>
+          <span>Upload PYQ (PDF / Image)</span>
+        </button>
+
+        <button
+          id="themeToggleBtn"
+          aria-label="Toggle Dark Mode"
+          class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors"
+        >
+          <!-- Sun Icon -->
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+          <!-- Moon Icon -->
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Subtle Welcoming Hero Section with University Emblem Watermark -->
+  <section class="relative overflow-hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 hero-crest-bg">
+    <!-- Subtle Decorative HNBGU Academic Emblem SVG Watermark in Background -->
+    <div class="pointer-events-none select-none absolute -right-10 -top-12 opacity-[0.06] dark:opacity-[0.08] text-brand-800 dark:text-emerald-300" aria-hidden="true">
+      <svg class="w-96 h-96" viewBox="0 0 240 240" fill="none" stroke="currentColor">
+        <circle cx="120" cy="120" r="110" stroke-width="3" stroke-dasharray="6 4" />
+        <circle cx="120" cy="120" r="96" stroke-width="4" />
+        <circle cx="120" cy="120" r="68" stroke-width="2" />
+        <!-- Himalayan Peaks Motif -->
+        <path d="M58 142 L92 92 L114 122 L136 84 L182 142 Z" stroke-width="3" fill="currentColor" fill-opacity="0.15" />
+        <path d="M84 104 L92 92 L101 105 M126 100 L136 84 L147 101" stroke-width="2.5" />
+        <!-- Open Book of Knowledge -->
+        <path d="M82 154 Q101 148 120 156 Q139 148 158 154 L158 172 Q139 166 120 174 Q101 166 82 172 Z" stroke-width="2.5" />
+        <line x1="120" y1="156" x2="120" y2="174" stroke-width="2.5" />
+        <!-- Emblem Ring Text -->
+        <text x="120" y="38" text-anchor="middle" font-size="10" font-weight="bold" letter-spacing="3" fill="currentColor">H.N.B. GARHWAL UNIVERSITY</text>
+        <text x="120" y="208" text-anchor="middle" font-size="9" font-weight="bold" letter-spacing="2.5" fill="currentColor">SRINAGAR • UTTARAKHAND</text>
+      </svg>
+    </div>
+
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-7 relative z-10">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <div class="max-w-3xl space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200/80 dark:border-brand-800 text-xs font-semibold text-brand-800 dark:text-brand-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="dynamicGreeting">Namaste & Welcome, HNBGU Scholar!</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Hemvati Nandan Bahuguna Garhwal University <span class="text-brand-700 dark:text-emerald-400">PYQ Repository</span>
+          </h1>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            A dedicated student-led digital archive for Srinagar (Birla &amp; Chauras), Pauri, and Tehri campus exam papers. Browse verified PDFs and scanned question sheets across all university schools.
+          </p>
+        </div>
+
+        <!-- Quick School Jump Pills -->
+        <div class="flex flex-wrap gap-2 lg:justify-end shrink-0">
+          <button data-quick-prog="ALL" class="quick-prog-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-brand-700 text-white shadow-sm transition">
+            All Schools
+          </button>
+          <button data-quick-prog="B.Tech" class="quick-prog-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 transition">
+            Engineering (SOET)
+          </button>
+          <button data-quick-prog="B.Sc" class="quick-prog-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 transition">
+            Sciences
+          </button>
+          <button data-quick-prog="B.Sc Forestry" class="quick-prog-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 transition">
+            Forestry &amp; Agri
+          </button>
+          <button data-quick-prog="B.Com" class="quick-prog-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 transition">
+            Commerce
+          </button>
+          <button data-quick-prog="B.A." class="quick-prog-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 transition">
+            Arts &amp; Humanities
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Desktop Workspace Layout -->
+  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- Left Sidebar: Filter Controls (3 cols on lg) -->
+      <aside class="lg:col-span-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm lg:sticky lg:top-20">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-semibold text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">Filters</h2>
+          <button id="resetFiltersBtn" class="text-xs font-medium text-brand-600 dark:text-brand-400 hover:underline">
+            Reset All
+          </button>
+        </div>
+
+        <!-- Program Filter -->
+        <div class="mb-5">
+          <label for="programFilter" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+            HNBGU Degree Program
+          </label>
+          <select id="programFilter" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:border-brand-500 outline-none">
+            <option value="ALL">All HNBGU Programs</option>
+            <optgroup label="Engineering & Technology">
+              <option value="B.Tech">B.Tech (CSE / ECE / IT / Mech / Instrumentation)</option>
+              <option value="MCA">MCA (Master of Computer Applications)</option>
+            </optgroup>
+            <optgroup label="Sciences & Life Sciences">
+              <option value="B.Sc">B.Sc (PCM / CBZ / Biotech / Microbiology)</option>
+              <option value="M.Sc">M.Sc (Physics / Chemistry / Botany / Zoology / Env. Sci)</option>
+              <option value="B.Pharma">B.Pharma (Pharmaceutical Sciences)</option>
+              <option value="M.Pharma">M.Pharma</option>
+            </optgroup>
+            <optgroup label="Agriculture & Earth Sciences">
+              <option value="B.Sc Forestry">B.Sc (Hons.) Forestry & Horticulture</option>
+              <option value="M.Sc Forestry">M.Sc Forestry / Rural Tech / Remote Sensing & GIS</option>
+            </optgroup>
+            <optgroup label="Commerce & Management">
+              <option value="B.Com">B.Com (Bachelor of Commerce)</option>
+              <option value="M.Com">M.Com (Master of Commerce)</option>
+              <option value="BBA">BBA (Bachelor of Business Administration)</option>
+              <option value="MBA">MBA / MBA Tourism & Travel Management</option>
+              <option value="BHM">BHM (Hotel Management & Catering)</option>
+            </optgroup>
+            <optgroup label="Arts, Humanities & Social Sciences">
+              <option value="B.A.">B.A. / B.A. (Hons.) Mass Communication</option>
+              <option value="M.A.">M.A. / MSW (Master of Social Work)</option>
+              <option value="B.Lib">B.Lib.I.Sc (Library & Information Science)</option>
+            </optgroup>
+            <optgroup label="Education & Law">
+              <option value="B.Ed">B.Ed / ITEP (B.A. B.Ed / B.Sc. B.Ed)</option>
+              <option value="M.Ed">M.Ed / B.P.Ed / M.P.Ed</option>
+              <option value="LL.B">LL.B (Bachelor of Law)</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Semester Pills -->
+        <div class="mb-5">
+          <span class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+            Semester
+          </span>
+          <div id="semesterPills" class="grid grid-cols-4 gap-2">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- Exam Type Filter -->
+        <div class="mb-5">
+          <span class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+            Exam Type
+          </span>
+          <div class="flex flex-wrap gap-2" id="examTypeGroup">
+            <button data-type="ALL" class="exam-type-btn active px-3 py-1.5 rounded-lg text-xs font-medium bg-brand-600 text-white transition">All</button>
+            <button data-type="End-Sem" class="exam-type-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">End-Sem</button>
+            <button data-type="Mid-Sem" class="exam-type-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">Mid-Sem</button>
+            <button data-type="Supplementary" class="exam-type-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">Backlog / Supp</button>
+          </div>
+        </div>
+
+        <!-- Year Filter -->
+        <div class="mb-6">
+          <label for="yearFilter" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+            Examination Year
+          </label>
+          <select id="yearFilter" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:border-brand-500 outline-none">
+            <option value="ALL">All Years (2020 – 2026)</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+
+        <!-- Archive Stats Card -->
+        <div class="p-4 rounded-xl bg-gradient-to-br from-slate-100 to-slate-50 dark:from-slate-800/80 dark:to-slate-800/40 border border-slate-200/80 dark:border-slate-700/80">
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <span>Indexed Papers</span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-semibold">● Verified</span>
+          </div>
+          <div class="text-2xl font-bold text-slate-900 dark:text-white" id="totalStatsCount">0 Papers</div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            Standardized & OCR compressed for instant mobile/desktop download.
+          </p>
+        </div>
+      </aside>
+
+      <!-- Center Column: Paper Directory List (5 cols on lg) -->
+      <main class="lg:col-span-5 space-y-4">
+        <!-- Results Header -->
+        <div class="flex items-center justify-between bg-white dark:bg-slate-900 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div>
+            <h2 class="font-semibold text-base text-slate-900 dark:text-white">Question Papers</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400" id="resultsSubtitle">Showing all available papers</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="sortSelect" class="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline">Sort:</label>
+            <select id="sortSelect" class="text-xs font-medium bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-2.5 py-1.5 outline-none">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="code">Subject Code</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Papers Container -->
+        <div id="papersList" class="space-y-3">
+          <!-- Cards rendered dynamically -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-10 text-center">
+          <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 mx-auto flex items-center justify-center mb-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-slate-900 dark:text-white">No matching question papers</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-xs mx-auto">
+            Try clearing your filters or searching by a different subject code.
+          </p>
+          <button id="emptyResetBtn" class="mt-4 px-4 py-2 rounded-xl bg-brand-600 text-white text-xs font-medium hover:bg-brand-700 transition">
+            Reset Filters
+          </button>
+        </div>
+      </main>
+
+      <!-- Right Column: Desktop Document Previewer (4 cols on lg) -->
+      <section class="lg:col-span-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden lg:sticky lg:top-20 flex flex-col min-h-[600px]">
+        <!-- Preview Header -->
+        <div class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2 bg-slate-50/60 dark:bg-slate-800/40">
+          <div class="min-w-0">
+            <span id="previewBadge" class="inline-block text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-1">
+              CS-301 • 2025
+            </span>
+            <h2 id="previewTitle" class="font-bold text-sm text-slate-900 dark:text-white truncate">
+              Data Structures & Algorithms
+            </h2>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button
+              id="copyLinkBtn"
+              title="Copy Direct Paper Link"
+              class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+              </svg>
+            </button>
+            <button
+              id="downloadPaperBtn"
+              class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              <span>Download</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Preview Viewport: Supports Uploaded PDFs, Uploaded Images, & Formatted Text Sheets -->
+        <div class="p-4 flex-1 bg-slate-100/80 dark:bg-slate-950/60 overflow-y-auto flex flex-col">
+          <div id="paperSheet" class="bg-white text-slate-900 rounded-xl shadow-md border border-slate-200 p-5 text-xs leading-relaxed space-y-4 flex-1 flex flex-col">
+            <!-- Dynamically populated realistic paper preview or embedded PDF/Image -->
+          </div>
+        </div>
+
+        <!-- Preview Footer Meta -->
+        <div class="px-5 py-3 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+          <span id="previewFileMeta" class="truncate max-w-[65%]">File: BTech_Sem3_CS301_2025.pdf (1.2 MB)</span>
+          <span id="previewPagesMeta">4 Pages • OCR Ready</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Support & Contact Footer Section -->
+  <footer id="supportSection" class="mt-12 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 space-y-2.5">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-emerald-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <span>Student Support &amp; Paper Submissions</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+            Have an unlisted HNBGU exam paper? Send it to us!
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+            If you have clear PDFs or scanned photos of recent End-Sem or Mid-Sem papers from any HNBGU campus or affiliated college, email them to our archive desk. Include your <strong>Course, Semester, Subject Code, and Year</strong> so we can publish it for upcoming batches.
+          </p>
+        </div>
+
+        <div class="md:col-span-5">
+          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 space-y-3">
+            <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              Official Archive Desk Email
+            </div>
+            <div class="flex items-center justify-between gap-2 bg-white dark:bg-slate-900 px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700">
+              <a href="mailto:hnbgupyq.support@gmail.com?subject=HNBGU%20PYQ%20Submission" class="font-mono text-sm font-semibold text-brand-700 dark:text-emerald-400 hover:underline truncate">
+                hnbgupyq.support@gmail.com
+              </a>
+              <button
+                id="copySupportEmailBtn"
+                class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-brand-600 hover:text-white text-xs font-semibold text-slate-700 dark:text-slate-200 transition shrink-0"
+              >
+                Copy Email
+              </button>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">
+              Best wishes for your upcoming HNBGU semester examinations! • Built for students of Srinagar, Pauri &amp; Tehri Campuses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Contribute / Upload PDF or Image Modal -->
+  <div id="submitModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-lg w-full p-6 shadow-2xl transform transition-all my-8">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-white">Upload PYQ Document (PDF / Image)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Attach a PDF or scanned image so students can view and download it.</p>
+        </div>
+        <button id="closeSubmitModalBtn" class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <form id="contributeForm" class="mt-4 space-y-4">
+        <!-- File Upload Dropzone for PDF or Images -->
+        <div>
+          <label class="block text-xs font-semibold mb-1.5 text-slate-700 dark:text-slate-300">
+            Attach Question Paper File (PDF, JPG, PNG, WEBP)
+          </label>
+          <label
+            for="formFileInput"
+            id="fileDropLabel"
+            class="flex flex-col items-center justify-center w-full p-4 border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-400 rounded-xl bg-slate-50 dark:bg-slate-800/60 cursor-pointer transition text-center"
+          >
+            <svg class="w-7 h-7 text-brand-600 dark:text-brand-400 mb-1" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m6.75 12l-3-3m0 0l-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+            <span id="selectedFileName" class="text-xs font-semibold text-slate-700 dark:text-slate-200">
+              Click to choose a PDF or scanned Image file
+            </span>
+            <span class="text-[11px] text-slate-400 mt-0.5">
+              Supports .pdf, .jpg, .jpeg, .png (Instant live preview)
+            </span>
+            <input
+              type="file"
+              id="formFileInput"
+              accept=".pdf,image/png,image/jpeg,image/webp"
+              class="hidden"
+            />
+          </label>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold mb-1">HNBGU Program</label>
+            <select id="formProgram" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm outline-none">
+              <option value="B.Tech">B.Tech</option>
+              <option value="MCA">MCA</option>
+              <option value="B.Sc">B.Sc</option>
+              <option value="M.Sc">M.Sc</option>
+              <option value="B.Pharma">B.Pharma</option>
+              <option value="M.Pharma">M.Pharma</option>
+              <option value="B.Sc Forestry">B.Sc Forestry / Horticulture</option>
+              <option value="M.Sc Forestry">M.Sc Forestry / GIS</option>
+              <option value="B.Com">B.Com</option>
+              <option value="M.Com">M.Com</option>
+              <option value="BBA">BBA</option>
+              <option value="MBA">MBA / MBA Tourism</option>
+              <option value="BHM">BHM</option>
+              <option value="B.A.">B.A. / Mass Comm</option>
+              <option value="M.A.">M.A. / MSW</option>
+              <option value="B.Ed">B.Ed / ITEP</option>
+              <option value="LL.B">LL.B</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1">Semester</label>
+            <select id="formSemester" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm outline-none">
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3" selected>Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+              <option value="7">Semester 7</option>
+              <option value="8">Semester 8</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold mb-1">Subject Code</label>
+            <input type="text" id="formCode" placeholder="e.g., CS-402" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm outline-none uppercase" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1">Exam Year</label>
+            <input type="number" id="formYear" value="2026" min="2015" max="2026" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold mb-1">Subject Name</label>
+          <input type="text" id="formSubject" placeholder="e.g., Operating Systems" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold mb-1">Exam Type</label>
+            <select id="formType" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm outline-none">
+              <option value="End-Sem">End-Sem</option>
+              <option value="Mid-Sem">Mid-Sem</option>
+              <option value="Supplementary">Supplementary</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold mb-1">Key Topics (Optional)</label>
+            <input type="text" id="formTopic" placeholder="e.g., Deadlock & Scheduling" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm outline-none" />
+          </div>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-2">
+          <button type="button" id="cancelSubmitBtn" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-700 hover:bg-brand-800 text-white text-sm font-semibold shadow-sm">
+            Publish Paper
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Banner (Replaces alert()) -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-lg flex items-center gap-2.5 text-sm font-medium">
+      <svg class="w-5 h-5 text-emerald-400 dark:text-emerald-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span id="toastMessage">Action completed!</span>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Master JSON Dataset tailored for Hemvati Nandan Bahuguna Garhwal University (HNBGU)
+     */
+    const initialPapers = [
+      {
+        id: "cse301-2025",
+        program: "B.Tech",
+        semester: 3,
+        subjectCode: "SOET-CSE-301",
+        subjectName: "Data Structures & Algorithms",
+        year: 2025,
+        examType: "End-Sem",
+        fileSize: "1.2 MB",
+        pages: 4,
+        maxMarks: 70,
+        duration: "3 Hours",
+        topics: ["AVL Trees", "Dijkstra's Algorithm", "Dynamic Programming", "Hashing"],
+        sampleQuestions: [
+          "1. (a) Construct an AVL tree by inserting the following keys in sequence: 45, 20, 65, 10, 30, 25. Show all rotations clearly. [7 Marks]",
+          "2. (a) Write an algorithm for Dijkstra's shortest path and analyze its time complexity using a min-heap priority queue. [8 Marks]",
+          "3. (b) Explain open addressing vs. separate chaining in hash tables with collision resolution examples. [7 Marks]"
+        ]
+      },
+      {
+        id: "for402-2025",
+        program: "B.Sc Forestry",
+        semester: 4,
+        subjectCode: "SAAS-FOR-402",
+        subjectName: "Silviculture & Himalayan Forest Ecology",
+        year: 2025,
+        examType: "End-Sem",
+        fileSize: "1.4 MB",
+        pages: 3,
+        maxMarks: 70,
+        duration: "3 Hours",
+        topics: ["Garhwal Himalayas", "Regeneration", "Forest Mensuration", "Agroforestry"],
+        sampleQuestions: [
+          "1. Describe the altitudinal zonation of forest types in the Garhwal Himalayas with dominant species. [10 Marks]",
+          "2. Compare natural and artificial regeneration methods for Chir Pine (Pinus roxburghii) and Banj Oak. [8 Marks]",
+          "3. Explain shelterwood silvicultural systems and their suitability for temperate hill forests. [7 Marks]"
+        ]
+      },
+      {
+        id: "bph301-2025",
+        program: "B.Pharma",
+        semester: 3,
+        subjectCode: "BP-301T",
+        subjectName: "Pharmaceutical Organic Chemistry II",
+        year: 2025,
+        examType: "End-Sem",
+        fileSize: "1.1 MB",
+        pages: 3,
+        maxMarks: 75,
+        duration: "3 Hours",
+        topics: ["Benzene Derivatives", "Fats & Oils", "Polynuclear Hydrocarbons", "Cycloalkanes"],
+        sampleQuestions: [
+          "1. Explain the analytical, synthetic, and other evidences in the derivation of structure of Benzene. [10 Marks]",
+          "2. Define Acid value, Saponification value, and Iodine value of fats and oils with their significance. [8 Marks]",
+          "3. Discuss Bayer's strain theory and Coulson-Moffitt modification for cycloalkanes. [7 Marks]"
+        ]
+      },
+      {
+        id: "bcom202-2025",
+        program: "B.Com",
+        semester: 2,
+        subjectCode: "SOC-COM-202",
+        subjectName: "Corporate Accounting & Financial Reporting",
+        year: 2025,
+        examType: "End-Sem",
+        fileSize: "980 KB",
+        pages: 4,
+        maxMarks: 70,
+        duration: "3 Hours",
+        topics: ["Amalgamation", "Valuation of Goodwill", "Issue of Shares", "Final Accounts"],
+        sampleQuestions: [
+          "1. Differentiate between Amalgamation in the nature of Merger and Purchase as per AS-14. [8 Marks]",
+          "2. Calculate the value of Goodwill using Super Profit and Capitalization methods from the given Balance Sheet. [10 Marks]",
+          "3. Pass journal entries for forfeiture and re-issue of equity shares issued at a premium. [7 Marks]"
+        ]
+      },
+      {
+        id: "ba101-2025",
+        program: "B.A.",
+        semester: 1,
+        subjectCode: "SHSS-HIS-101",
+        subjectName: "History of Uttarakhand & Central Himalayas",
+        year: 2025,
+        examType: "End-Sem",
+        fileSize: "1.1 MB",
+        pages: 3,
+        maxMarks: 70,
+        duration: "3 Hours",
+        topics: ["Katyuri Dynasty", "Panwar Rulers", "Gorkha Administration", "Chipko Movement"],
+        sampleQuestions: [
+          "1. Discuss the administrative and cultural achievements of the Katyuri dynasty in Uttarakhand. [10 Marks]",
+          "2. Trace the rise of the Panwar (Parmar) dynasty in Garhwal from Kanakpal to Ajaypal. [8 Marks]",
+          "3. Analyze the socio-ecological significance of the Chipko Movement in the Garhwal region. [7 Marks]"
+        ]
+      },
+      {
+        id: "bsc201-2025",
+        program: "B.Sc",
+        semester: 2,
+        subjectCode: "SOS-PHY-201",
+        subjectName: "Electricity, Magnetism & Electromagnetic Theory",
+        year: 2025,
+        examType: "End-Sem",
+        fileSize: "1.1 MB",
+        pages: 3,
+        maxMarks: 70,
+        duration: "3 Hours",
+        topics: ["Gauss's Law", "Maxwell's Equations", "Poynting Vector", "LCR Circuits"],
+        sampleQuestions: [
+          "1. State and prove Gauss's theorem in electrostatics and apply it to find electric field due to a charged sphere. [8 Marks]",
+          "2. Derive Maxwell's four electromagnetic equations in differential and integral forms. [9 Marks]",
+          "3. Obtain an expression for the Poynting vector and explain its physical significance. [8 Marks]"
+        ]
+      },
+      {
+        id: "mbattm204-2025",
+        program: "MBA",
+        semester: 2,
+        subjectCode: "CMTHS-TTM-204",
+        subjectName: "Eco-Tourism & Himalayan Destination Management",
+        year: 2025,
+        examType: "End-Sem",
+        fileSize: "1.3 MB",
+        pages: 4,
+        maxMarks: 70,
+        duration: "3 Hours",
+        topics: ["Sustainable Tourism", "Carrying Capacity", "Pilgrimage Circuits", "Adventure Tourism"],
+        sampleQuestions: [
+          "1. Evaluate the concept of Carrying Capacity in fragile Himalayan pilgrimage destinations like Char Dham. [10 Marks]",
+          "2. Formulate a sustainable community-based eco-tourism plan for rural Garhwal. [8 Marks]",
+          "3. Discuss safety standards and regulatory frameworks for river rafting and trekking in Uttarakhand. [7 Marks]"
+        ]
+      },
+      {
+        id: "bed102-2026",
+        program: "B.Ed",
+        semester: 1,
+        subjectCode: "SOE-EDU-102",
+        subjectName: "Contemporary India & Education (NEP 2020)",
+        year: 2026,
+        examType: "Mid-Sem",
+        fileSize: "840 KB",
+        pages: 2,
+        maxMarks: 30,
+        duration: "1.5 Hours",
+        topics: ["NEP 2020", "ITEP Framework", "Constitutional Values", "Universalization"],
+        sampleQuestions: [
+          "1. Critically analyze the 5+3+3+4 curricular and pedagogical structure proposed in NEP 2020. [8 Marks]",
+          "2. Discuss constitutional provisions for equality of educational opportunity in India. [6 Marks]",
+          "3. Explain the role of Integrated Teacher Education Programme (ITEP) in quality school education. [6 Marks]"
+        ]
+      },
+      {
+        id: "llb301-2024",
+        program: "LL.B",
+        semester: 3,
+        subjectCode: "SOL-LAW-301",
+        subjectName: "Constitutional Law of India I",
+        year: 2024,
+        examType: "End-Sem",
+        fileSize: "1.2 MB",
+        pages: 3,
+        maxMarks: 70,
+        duration: "3 Hours",
+        topics: ["Fundamental Rights", "Article 14 & 21", "Writ Jurisdiction", "Directive Principles"],
+        sampleQuestions: [
+          "1. Examine the evolving scope of Right to Life and Personal Liberty under Article 21 with landmark Supreme Court cases. [10 Marks]",
+          "2. Discuss the doctrine of Reasonable Classification under Article 14 of the Indian Constitution. [8 Marks]",
+          "3. Explain the five types of writs issued under Articles 32 and 226. [7 Marks]"
+        ]
+      },
+      {
+        id: "bsc501-2024",
+        program: "B.Sc",
+        semester: 5,
+        subjectCode: "615451",
+        subjectName: "Computer Science (Elective Paper)",
+        year: 2024,
+        examType: "End-Sem",
+        fileSize: "29 KB",
+        pages: 4,
+        maxMarks: 70,
+        duration: "3 Hours",
+        fileUrl: "BSC_Sem5_ComputerScience_2024.jpeg",
+        fileMime: "image/jpeg",
+        originalFileName: "BSC_Sem5_ComputerScience_2024.jpeg",
+        topics: ["Process States", "CPU Scheduling", "Banker's Algorithm", "Page Replacement", "Synchronization"],
+        sampleQuestions: [
+          "1. Explain process states and represent their transitions with a suitable state diagram.",
+          "2. Explain non-preemptive and preemptive CPU scheduling, and compare SJF and FCFS scheduling.",
+          "3. Explain the Banker's Algorithm and discuss deadlock prevention and avoidance."
+        ]
+      }
+    ];
+
+    // Application State
+    let papers = [...initialPapers];
+    let state = {
+      search: "",
+      program: "ALL",
+      semester: "ALL",
+      examType: "ALL",
+      year: "ALL",
+      sort: "newest",
+      selectedPaperId: initialPapers[0].id
+    };
+
+    // DOM Elements
+    const searchInput = document.getElementById("searchInput");
+    const programFilter = document.getElementById("programFilter");
+    const semesterPills = document.getElementById("semesterPills");
+    const yearFilter = document.getElementById("yearFilter");
+    const sortSelect = document.getElementById("sortSelect");
+    const papersList = document.getElementById("papersList");
+    const emptyState = document.getElementById("emptyState");
+    const resultsSubtitle = document.getElementById("resultsSubtitle");
+    const totalStatsCount = document.getElementById("totalStatsCount");
+
+    // Preview Elements
+    const previewBadge = document.getElementById("previewBadge");
+    const previewTitle = document.getElementById("previewTitle");
+    const paperSheet = document.getElementById("paperSheet");
+    const previewFileMeta = document.getElementById("previewFileMeta");
+    const previewPagesMeta = document.getElementById("previewPagesMeta");
+
+    /**
+     * Show non-intrusive toast message
+     */
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      const toastMessage = document.getElementById("toastMessage");
+      toastMessage.textContent = msg;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2800);
+    }
+
+    /**
+     * Set Time-Aware Warm Academic Greeting in Hero Banner
+     */
+    function initGreeting() {
+      const hour = new Date().getHours();
+      const greetingEl = document.getElementById("dynamicGreeting");
+      if (!greetingEl) return;
+      let timeGreeting = "Namaste & Welcome";
+      if (hour < 12) timeGreeting = "Suprabhat & Welcome";
+      else if (hour < 17) timeGreeting = "Namaste & Good Afternoon";
+      else timeGreeting = "Namaste & Good Evening";
+      greetingEl.textContent = `${timeGreeting}, HNBGU Scholar!`;
+    }
+
+    /**
+     * Render Semester Filter Buttons (All, 1..8)
+     */
+    function renderSemesterPills() {
+      const options = ["ALL", 1, 2, 3, 4, 5, 6, 7, 8];
+      semesterPills.innerHTML = options.map(sem => {
+        const isActive = String(state.semester) === String(sem);
+        const label = sem === "ALL" ? "All" : `S${sem}`;
+        return `
+          <button
+            data-sem="${sem}"
+            class="sem-pill py-1.5 rounded-lg text-xs font-semibold border transition ${
+              isActive
+                ? "bg-brand-600 text-white border-brand-600 shadow-sm"
+                : "bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-brand-400"
+            }"
+          >
+            ${label}
+          </button>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".sem-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.semester = btn.dataset.sem;
+          renderSemesterPills();
+          renderPapers();
+        });
+      });
+    }
+
+    /**
+     * Filter & Sort Papers
+     */
+    function getFilteredPapers() {
+      const query = state.search.trim().toLowerCase();
+
+      return papers
+        .filter(paper => {
+          const matchesProgram = state.program === "ALL" || paper.program === state.program;
+          const matchesSem = state.semester === "ALL" || String(paper.semester) === String(state.semester);
+          const matchesType = state.examType === "ALL" || paper.examType === state.examType;
+          const matchesYear = state.year === "ALL" || String(paper.year) === String(state.year);
+
+          const matchesSearch =
+            !query ||
+            paper.subjectName.toLowerCase().includes(query) ||
+            paper.subjectCode.toLowerCase().includes(query) ||
+            paper.program.toLowerCase().includes(query) ||
+            paper.topics.some(t => t.toLowerCase().includes(query));
+
+          return matchesProgram && matchesSem && matchesType && matchesYear && matchesSearch;
+        })
+        .sort((a, b) => {
+          if (state.sort === "newest") return b.year - a.year;
+          if (state.sort === "oldest") return a.year - b.year;
+          if (state.sort === "code") return a.subjectCode.localeCompare(b.subjectCode);
+          return 0;
+        });
+    }
+
+    /**
+     * Render Center List of Question Papers
+     */
+    function renderPapers() {
+      const filtered = getFilteredPapers();
+      totalStatsCount.textContent = `${papers.length} Papers`;
+      resultsSubtitle.textContent = `Showing ${filtered.length} of ${papers.length} question papers`;
+
+      if (filtered.length === 0) {
+        papersList.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      papersList.innerHTML = filtered.map(paper => {
+        const isSelected = paper.id === state.selectedPaperId;
+        const badgeColor =
+          paper.examType === "End-Sem"
+            ? "bg-indigo-50 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800"
+            : paper.examType === "Mid-Sem"
+            ? "bg-amber-50 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300 border-amber-200 dark:border-amber-800"
+            : "bg-rose-50 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 border-rose-200 dark:border-rose-800";
+
+        return `
+          <article
+            data-id="${paper.id}"
+            class="paper-card cursor-pointer rounded-2xl p-4 border transition-all ${
+              isSelected
+                ? "bg-white dark:bg-slate-900 border-brand-500 ring-2 ring-brand-500/20 shadow-md"
+                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-brand-300 dark:hover:border-slate-700 shadow-sm"
+            }"
+          >
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                  <span class="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                    ${paper.subjectCode}
+                  </span>
+                  <span class="text-xs font-medium px-2 py-0.5 rounded-md border ${badgeColor}">
+                    ${paper.examType}
+                  </span>
+                  <span class="text-xs text-slate-500 dark:text-slate-400">
+                    ${paper.program} • Sem ${paper.semester}
+                  </span>
+                </div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white leading-snug">
+                  ${paper.subjectName}
+                </h3>
+              </div>
+
+              <div class="text-right shrink-0">
+                <span class="inline-block font-bold text-sm text-brand-600 dark:text-brand-400">
+                  ${paper.year}
+                </span>
+                <div class="text-[11px] text-slate-400 mt-0.5">
+                  ${paper.fileUrl ? (paper.fileMime && paper.fileMime.startsWith("image/") ? "IMG • " : "PDF • ") : ""}${paper.fileSize}
+                </div>
+              </div>
+            </div>
+
+            <!-- Topic Tags -->
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              ${paper.topics.map(topic => `
+                <span class="text-[11px] px-2 py-0.5 rounded-md bg-slate-100/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400">
+                  #${topic}
+                </span>
+              `).join("")}
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      // Attach click handlers to cards
+      document.querySelectorAll(".paper-card").forEach(card => {
+        card.addEventListener("click", () => {
+          state.selectedPaperId = card.dataset.id;
+          renderPapers();
+          renderPreview();
+        });
+      });
+    }
+
+    /**
+     * Render Right-Side Interactive Exam Paper Preview (Supports Uploaded PDFs, Uploaded Images, & Formatted Text)
+     */
+    function renderPreview() {
+      const paper = papers.find(p => p.id === state.selectedPaperId) || papers[0];
+      if (!paper) return;
+
+      const defaultExt = paper.fileUrl ? (paper.fileMime && paper.fileMime.startsWith("image/") ? "png" : "pdf") : "pdf";
+      const standardizedFileName = paper.originalFileName || `${paper.program.replace('.', '')}_Sem${paper.semester}_${paper.subjectCode.replace('-', '')}_${paper.year}.${defaultExt}`;
+
+      previewBadge.textContent = `${paper.subjectCode} • ${paper.examType} • ${paper.year}`;
+      previewTitle.textContent = paper.subjectName;
+      previewFileMeta.textContent = `${standardizedFileName} (${paper.fileSize})`;
+      previewPagesMeta.textContent = paper.fileUrl
+        ? `${paper.fileMime && paper.fileMime.startsWith("image/") ? "Scanned Image" : "Uploaded PDF"} • Verified`
+        : `${paper.pages} Pages • ${paper.maxMarks} Marks`;
+
+      // Case 1: Creator uploaded an actual PDF file
+      if (paper.fileUrl && paper.fileMime === "application/pdf") {
+        paperSheet.innerHTML = `
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <span class="text-[11px] font-semibold text-brand-700">Live PDF Document Viewer</span>
+            <a href="${paper.fileUrl}" target="_blank" rel="noopener" class="text-[11px] font-semibold text-emerald-700 hover:underline">
+              Open Fullscreen ↗
+            </a>
+          </div>
+          <iframe
+            src="${paper.fileUrl}"
+            title="${paper.subjectName} PDF"
+            class="w-full flex-1 min-h-[430px] rounded-lg border border-slate-200 bg-slate-50"
+          ></iframe>
+        `;
+        return;
+      }
+
+      // Case 2: Creator uploaded a scanned Image (JPG / PNG / WEBP)
+      if (paper.fileUrl && paper.fileMime && paper.fileMime.startsWith("image/")) {
+        paperSheet.innerHTML = `
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <span class="text-[11px] font-semibold text-brand-700">Scanned Question Paper Image</span>
+            <a href="${paper.fileUrl}" target="_blank" rel="noopener" class="text-[11px] font-semibold text-emerald-700 hover:underline">
+              View Full Resolution ↗
+            </a>
+          </div>
+          <div class="flex-1 flex items-center justify-center bg-slate-50 rounded-lg border border-slate-200 p-2 overflow-auto">
+            <img
+              src="${paper.fileUrl}"
+              alt="${paper.subjectName} Question Paper"
+              class="max-w-full h-auto rounded shadow-sm object-contain"
+            />
+          </div>
+        `;
+        return;
+      }
+
+      // Case 3: Default formatted university question sheet preview
+      paperSheet.innerHTML = `
+        <div class="border-b-2 border-slate-900 pb-3 text-center">
+          <div class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Hemvati Nandan Bahuguna Garhwal University, Srinagar (Garhwal)</div>
+          <div class="text-[9px] uppercase tracking-wider text-slate-400">(A Central University)</div>
+          <div class="font-bold text-sm uppercase mt-1">${paper.program} Semester ${paper.semester} Examination — ${paper.year}</div>
+          <div class="font-semibold text-xs mt-1">${paper.subjectCode}: ${paper.subjectName}</div>
+          <div class="flex justify-between text-[11px] font-medium text-slate-600 mt-2 pt-2 border-t border-slate-200">
+            <span>Time: ${paper.duration}</span>
+            <span>Exam: ${paper.examType}</span>
+            <span>Max Marks: ${paper.maxMarks}</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px] text-slate-600 italic">
+          <strong>Instructions:</strong> Attempt any five questions. All questions carry equal marks. Assume suitable missing data if necessary.
+        </div>
+
+        <div class="space-y-3 pt-1">
+          ${paper.sampleQuestions.map(q => `
+            <p class="text-slate-800 font-normal leading-relaxed">${q}</p>
+          `).join("")}
+        </div>
+
+        <div class="pt-4 border-t border-dashed border-slate-300 text-center text-[11px] text-slate-400">
+          — End of Preview (Page 1 of ${paper.pages}) —
+        </div>
+      `;
+    }
+
+    /**
+     * Trigger Download (Downloads the actual uploaded PDF/Image if present, or formatted text sheet)
+     */
+    function downloadCurrentPaper() {
+      const paper = papers.find(p => p.id === state.selectedPaperId);
+      if (!paper) return;
+
+      // Download actual uploaded PDF or Image
+      if (paper.fileUrl) {
+        const a = document.createElement("a");
+        a.href = paper.fileUrl;
+        a.download = paper.originalFileName || `${paper.subjectCode}_${paper.year}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showToast(`Downloading ${a.download}`);
+        return;
+      }
+
+      const fileName = `${paper.program.replace('.', '')}_Sem${paper.semester}_${paper.subjectCode.replace('-', '')}_${paper.year}.txt`;
+      const content = [
+        `HEMVATI NANDAN BAHUGUNA GARHWAL UNIVERSITY — PYQ ARCHIVE`,
+        `==================================================`,
+        `Program:      ${paper.program}`,
+        `Semester:     ${paper.semester}`,
+        `Subject Code: ${paper.subjectCode}`,
+        `Subject Name: ${paper.subjectName}`,
+        `Exam Type:    ${paper.examType} (${paper.year})`,
+        `Duration:     ${paper.duration} | Max Marks: ${paper.maxMarks}`,
+        `Key Topics:   ${paper.topics.join(", ")}`,
+        `==================================================`,
+        ``,
+        `QUESTIONS:`,
+        ...paper.sampleQuestions.map(q => `\n${q}`),
+        ``,
+        `Downloaded from HNBGU Vault PYQ Portal.`
+      ].join("\n");
+
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast(`Downloaded ${fileName}`);
+    }
+
+    /**
+     * Copy Direct Shareable Link (Using execCommand fallback per rules)
+     */
+    function copyPaperLink() {
+      const paper = papers.find(p => p.id === state.selectedPaperId);
+      if (!paper) return;
+
+      const shareUrl = `${window.location.origin}${window.location.pathname}#${paper.id}`;
+      const tempInput = document.createElement("input");
+      tempInput.value = shareUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+
+      showToast(`Copied direct link for ${paper.subjectCode} (${paper.year})`);
+    }
+
+    // Event Listeners
+    searchInput.addEventListener("input", (e) => {
+      state.search = e.target.value;
+      renderPapers();
+    });
+
+    // Keyboard shortcut '/' to focus search
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "/" && document.activeElement !== searchInput && !document.getElementById("submitModal").classList.contains("flex")) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    programFilter.addEventListener("change", (e) => {
+      state.program = e.target.value;
+      updateQuickProgramPills();
+      renderPapers();
+    });
+
+    // Quick School Jump Pills in Hero Section
+    function updateQuickProgramPills() {
+      document.querySelectorAll(".quick-prog-btn").forEach(btn => {
+        const isMatch = btn.dataset.quickProg === state.program;
+        btn.classList.toggle("bg-brand-700", isMatch);
+        btn.classList.toggle("text-white", isMatch);
+        btn.classList.toggle("bg-slate-100", !isMatch);
+        btn.classList.toggle("dark:bg-slate-800", !isMatch);
+        btn.classList.toggle("text-slate-700", !isMatch);
+        btn.classList.toggle("dark:text-slate-200", !isMatch);
+      });
+    }
+
+    document.querySelectorAll(".quick-prog-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.program = btn.dataset.quickProg;
+        programFilter.value = state.program;
+        updateQuickProgramPills();
+        renderPapers();
+      });
+    });
+
+    yearFilter.addEventListener("change", (e) => {
+      state.year = e.target.value;
+      renderPapers();
+    });
+
+    sortSelect.addEventListener("change", (e) => {
+      state.sort = e.target.value;
+      renderPapers();
+    });
+
+    document.querySelectorAll(".exam-type-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".exam-type-btn").forEach(b => {
+          b.classList.remove("bg-brand-600", "text-white");
+          b.classList.add("bg-slate-100", "dark:bg-slate-800", "text-slate-700", "dark:text-slate-300");
+        });
+        btn.classList.remove("bg-slate-100", "dark:bg-slate-800", "text-slate-700", "dark:text-slate-300");
+        btn.classList.add("bg-brand-600", "text-white");
+        state.examType = btn.dataset.type;
+        renderPapers();
+      });
+    });
+
+    function resetAllFilters() {
+      state.search = "";
+      state.program = "ALL";
+      state.semester = "ALL";
+      state.examType = "ALL";
+      state.year = "ALL";
+      searchInput.value = "";
+      programFilter.value = "ALL";
+      yearFilter.value = "ALL";
+
+      document.querySelectorAll(".exam-type-btn").forEach(b => {
+        const isAll = b.dataset.type === "ALL";
+        b.classList.toggle("bg-brand-600", isAll);
+        b.classList.toggle("text-white", isAll);
+        b.classList.toggle("bg-slate-100", !isAll);
+        b.classList.toggle("dark:bg-slate-800", !isAll);
+        b.classList.toggle("text-slate-700", !isAll);
+        b.classList.toggle("dark:text-slate-300", !isAll);
+      });
+
+      renderSemesterPills();
+      updateQuickProgramPills();
+      renderPapers();
+      showToast("All filters reset");
+    }
+
+    document.getElementById("resetFiltersBtn").addEventListener("click", resetAllFilters);
+    document.getElementById("emptyResetBtn").addEventListener("click", resetAllFilters);
+    document.getElementById("downloadPaperBtn").addEventListener("click", downloadCurrentPaper);
+    document.getElementById("copyLinkBtn").addEventListener("click", copyPaperLink);
+
+    // Copy Support Email in Footer
+    document.getElementById("copySupportEmailBtn").addEventListener("click", () => {
+      const tempInput = document.createElement("input");
+      tempInput.value = "hnbgupyq.support@gmail.com";
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      showToast("Copied support email: hnbgupyq.support@gmail.com");
+    });
+
+    // Dark Mode Toggle
+    document.getElementById("themeToggleBtn").addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
+
+    // Contribute / Upload PDF or Image Modal Logic
+    const submitModal = document.getElementById("submitModal");
+    const formFileInput = document.getElementById("formFileInput");
+    const selectedFileName = document.getElementById("selectedFileName");
+
+    formFileInput.addEventListener("change", () => {
+      const file = formFileInput.files[0];
+      if (file) {
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        selectedFileName.textContent = `${file.name} (${sizeMB} MB)`;
+      } else {
+        selectedFileName.textContent = "Click to choose a PDF or scanned Image file";
+      }
+    });
+
+    const openModal = () => {
+      submitModal.classList.remove("hidden");
+      submitModal.classList.add("flex");
+    };
+    const closeModal = () => {
+      submitModal.classList.add("hidden");
+      submitModal.classList.remove("flex");
+    };
+
+    document.getElementById("openSubmitModalBtn").addEventListener("click", openModal);
+    document.getElementById("closeSubmitModalBtn").addEventListener("click", closeModal);
+    document.getElementById("cancelSubmitBtn").addEventListener("click", closeModal);
+
+    document.getElementById("contributeForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const code = document.getElementById("formCode").value.trim().toUpperCase();
+      const subject = document.getElementById("formSubject").value.trim();
+      const program = document.getElementById("formProgram").value;
+      const semester = parseInt(document.getElementById("formSemester").value, 10);
+      const year = parseInt(document.getElementById("formYear").value, 10);
+      const examType = document.getElementById("formType").value;
+      const topic = document.getElementById("formTopic").value.trim() || "University Pattern";
+      const uploadedFile = formFileInput.files[0];
+
+      let fileUrl = null;
+      let fileMime = null;
+      let originalFileName = null;
+      let formattedSize = "1.1 MB";
+
+      if (uploadedFile) {
+        fileUrl = URL.createObjectURL(uploadedFile);
+        fileMime = uploadedFile.type;
+        originalFileName = uploadedFile.name;
+        const kb = uploadedFile.size / 1024;
+        formattedSize = kb > 1024 ? `${(kb / 1024).toFixed(2)} MB` : `${Math.max(1, Math.round(kb))} KB`;
+      }
+
+      const newPaper = {
+        id: `${code.toLowerCase().replace(/[^a-z0-9]/g, '')}-${year}-${Date.now()}`,
+        program,
+        semester,
+        subjectCode: code,
+        subjectName: subject,
+        year,
+        examType,
+        fileSize: formattedSize,
+        pages: 3,
+        maxMarks: examType === "Mid-Sem" ? 30 : 70,
+        duration: examType === "Mid-Sem" ? "1.5 Hours" : "3 Hours",
+        fileUrl,
+        fileMime,
+        originalFileName,
+        topics: [topic, uploadedFile ? "Uploaded Scan" : "University Pattern"],
+        sampleQuestions: [
+          `1. (a) Explain the fundamental principles and applications of ${topic} in detail. [8 Marks]`,
+          `2. (b) Solve numerical/analytical problems based on ${subject} core syllabus units. [7 Marks]`
+        ]
+      };
+
+      papers.unshift(newPaper);
+      state.selectedPaperId = newPaper.id;
+      e.target.reset();
+      selectedFileName.textContent = "Click to choose a PDF or scanned Image file";
+      closeModal();
+      renderPapers();
+      renderPreview();
+      showToast(`Published ${code} (${subject}) to the archive!`);
+    });
+
+    // Initialize Desktop App
+    initGreeting();
+    renderSemesterPills();
+    renderPapers();
+    renderPreview();
+  </script>
+</body>
+</html>
